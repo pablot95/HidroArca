@@ -288,7 +288,7 @@ button {
   height: 78px;
   width: auto;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 12px;
 }
 
 .logo-wordmark {
