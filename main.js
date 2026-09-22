@@ -5,6 +5,19 @@
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.getElementById('nav-links');
 
+  document.querySelectorAll('.social-carousel-block').forEach(function (block) {
+    const carousel = block.querySelector('.social-carousel');
+    block.querySelectorAll('.carousel-control').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const card = carousel.querySelector('figure');
+        if (!card) return;
+        const direction = button.dataset.direction === 'next' ? 1 : -1;
+        const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
+        carousel.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      });
+    });
+  });
+
   window.addEventListener('scroll', function () {
     if (window.scrollY > 20) {
       navHeader.classList.add('scrolled');
@@ -193,6 +206,7 @@
   const autoLightboxSelectors = [
     '.postventa-img-wrap img',
     '.galeria-item img',
+    '.instalacion-galeria img',
     '.servicios-img img'
   ];
 
